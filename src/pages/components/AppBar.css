@@ -1,0 +1,47 @@
+.macos-menubar {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background-color: #e0e0e0;
+  padding: 0 10px;
+  font-family: sans-serif;
+  font-size: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.window-controls span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.close-btn {
+  background-color: #ff5f57;
+}
+
+.minimize-btn {
+  background-color: #ffbd2e;
+}
+
+.maximize-btn {
+  background-color: #28c940;
+}
+
+
+.app-title {
+  color: #555;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  cursor: move;
+}

@@ -1,0 +1,94 @@
+.rootContainer{
+  /* width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: #4CAF50; */
+      width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    top: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 500px;
+    overflow-y: scroll;
+  max-width: 700px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.imageBox {
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.imageBox:hover {
+  transform: scale(1.05);
+}
+
+.active {
+  border-color: #4CAF50;
+}
+
+.nav button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+
+}
+
+.container::-webkit-scrollbar {
+  width: 8px; /* Lebar Scrollbar Vertikal */
+  background-color: transparent;
+}
+
+/* 2. Styling Track (jalur di mana thumb bergerak) */
+.container::-webkit-scrollbar-track {
+  margin: 50px 0;
+  background-color: #f8f9fa; /* Latar belakang terang */
+  border-radius: 10px;
+}
+
+/* 3. Styling Thumb (bagian yang bisa digeser) */
+.container::-webkit-scrollbar-thumb {
+  background-color: #6c757d; /* Warna utama abu-abu tua */
+  border-radius: 10px; /* Membuat ujungnya membulat */
+  border: 2px solid #f8f9fa; /* Border untuk jarak dari track */
+}
+
+/* 4. Efek Hover pada Thumb */
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #495057; /* Warna lebih gelap saat disentuh/hover */
+}
