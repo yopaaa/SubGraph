@@ -19,12 +19,12 @@ const Panel = ({ data }) => {
             </div>
 
             <div className="center-header">
-                <div id="clock">{moment().format('LLLL')}</div>
+                <span id="clock">{moment().format('LLLL')}</span>
             </div>
 
             <div className="right-header">
-                {data.right.map(item => (
-                    <span key={item.id} className="flex-center">
+                {data.right.map((item, i) => (
+                    <span key={i} className="flex-center">
                         <img src={item.icon} alt={item.name} width="20" height="20" onClick={item.function} />
                     </span>
                 ))}
