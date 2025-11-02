@@ -35,7 +35,7 @@ async function loadImage() {
     return savedImage;
   }
 
-  const base64 = await cacheImage(images[4]);
+  const base64 = await cacheImage(images[9]);
 
   // onChange(base64);
   // setSelectedImage(images[5]);
