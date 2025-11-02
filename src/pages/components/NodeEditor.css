@@ -1,0 +1,47 @@
+.editor-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #f3f4f6;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  font-family: monospace;
+}
+
+.editor-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  background: white;
+  resize: vertical;
+  font-family: monospace;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.output {
+  margin-top: 20px;
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.output pre {
+  margin: 0;
+  font-size: 14px;
+}

@@ -1,0 +1,7 @@
+.container {
+    padding: 20px;
+    overflow: scroll;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}

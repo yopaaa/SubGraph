@@ -8,6 +8,7 @@ import NetworkGraphChart from './NetworkGraphChart'
 import BackgroundSelector from "./components/BackgroundSelector";
 import VideoGrid from "./VideoGrid";
 import Explorer from "./Explorer";
+import Graph from './components/Graph'
 
 const App = () => {
   const [showDiv, setShowDiv] = useState([0, 0, 0, 0, 0]);
@@ -38,7 +39,7 @@ const App = () => {
       id: 1, icon: "/icon/calculator.png", name: "Calculator", function: () => {
         toggleDiv(1)
       },
-      component: <></>
+      component: <Graph />
     },
     {
       id: 2, icon: "/icon/folder.png", name: "Folder", function: () => toggleDiv(2),

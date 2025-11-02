@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Network Graph Interaktif dengan Class</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      canvas {
+        border: 1px solid #000;
+        cursor: grab;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btnDownload">Download Gambar</button>
+    <canvas id="networkGraph1" width="600" height="400"></canvas>
+    <div id="info1">Klik node untuk info.</div>
+
+    <canvas id="networkGraph2" width="600" height="400"></canvas>
+    <div id="info2">Klik node untuk info.</div>
+
+    <script>
+      class NetworkGraph {
+        constructor(
+          canvasId,
+          infoId,
+          nodes,
+          edges,
+          nodeImageSrc,
+          nodeRadius = 20
+        ) {
+          this.canvas = document.getElementById(canvasId);
+          this.ctx = this.canvas.getContext("2d");
+          this.infoDiv = document.getElementById(infoId);
+
+          this.nodes = nodes;
+          this.edges = edges;
+          this.NODE_RADIUS = nodeRadius;
+
+          this.dragNode = null;
+          this.offsetX = 0;
+          this.offsetY = 0;
+          this.highlightNode = null;
+
+          this.nodeImg = new Image();
+          this.nodeImg.src = nodeImageSrc;
+          this.nodeImg.onload = () => {
+            this.drawGraph();
+          };
+
+          // Bind event handlers
+          this.canvas.addEventListener(
+            "mousedown",
+            this.onMouseDown.bind(this)
+          );
+          this.canvas.addEventListener("mouseup", this.onMouseUp.bind(this));
+          this.canvas.addEventListener(
+            "mousemove",
+            this.onMouseMove.bind(this)
+          );
+          this.canvas.addEventListener("click", this.onClick.bind(this));
+        }
+
+        getMousePos(evt) {
+          const rect = this.canvas.getBoundingClientRect();
+          return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top,
+          };
+        }
+
+        getNodeById(id) {
+          return this.nodes.find((node) => node.id === id);
+        }
+
+        getNodeAtPosition(x, y) {
+          return this.nodes.find((node) => {
+            const dx = x - node.x;
+            const dy = y - node.y;
+            return Math.sqrt(dx * dx + dy * dy) <= this.NODE_RADIUS;
+          });
+        }
+
+        drawEdges() {
+          this.ctx.strokeStyle = "#333";
+          this.ctx.lineWidth = 2;
+          this.edges.forEach(([from, to]) => {
+            const start = this.getNodeById(from);
+            const end = this.getNodeById(to);
+            this.ctx.beginPath();
+            this.ctx.moveTo(start.x, start.y);
+            this.ctx.lineTo(end.x, end.y);
+            this.ctx.stroke();
+          });
+        }
+
+        drawNodes() {
+          this.nodes.forEach((node) => {
+            if (this.nodeImg.complete && this.nodeImg.naturalWidth !== 0) {
+              const size = this.NODE_RADIUS * 2;
+
+              if (node === this.highlightNode) {
+                this.ctx.strokeStyle = "red";
+                this.ctx.lineWidth = 3;
+                this.ctx.beginPath();
+                this.ctx.arc(
+                  node.x,
+                  node.y,
+                  this.NODE_RADIUS + 3,
+                  0,
+                  2 * Math.PI
+                );
+                this.ctx.stroke();
+              }
+
+              this.ctx.drawImage(
+                this.nodeImg,
+                node.x - this.NODE_RADIUS,
+                node.y - this.NODE_RADIUS,
+                size,
+                size
+              );
+
+              // Label di bawah gambar
+              this.ctx.fillStyle = "#000";
+              this.ctx.font = "14px Arial";
+              this.ctx.textAlign = "center";
+              this.ctx.fillText(
+                node.id,
+                node.x,
+                node.y + this.NODE_RADIUS + 15
+              );
+            } else {
+              // Fallback lingkaran kalau gambar belum siap
+              this.ctx.beginPath();
+              this.ctx.fillStyle = "#4a90e2";
+              this.ctx.arc(node.x, node.y, this.NODE_RADIUS, 0, 2 * Math.PI);
+              this.ctx.fill();
+              this.ctx.stroke();
+            }
+          });
+        }
+
+        drawGraph() {
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.drawEdges();
+          this.drawNodes();
+        }
+
+        onMouseDown(evt) {
+          const pos = this.getMousePos(evt);
+          const node = this.getNodeAtPosition(pos.x, pos.y);
+          if (node) {
+            this.dragNode = node;
+            this.offsetX = pos.x - node.x;
+            this.offsetY = pos.y - node.y;
+            this.canvas.style.cursor = "grabbing";
+          }
+        }
+
+        onMouseUp(evt) {
+          if (this.dragNode) {
+            this.dragNode = null;
+            this.canvas.style.cursor = "grab";
+            this.drawGraph();
+          }
+        }
+
+        onMouseMove(evt) {
+          const pos = this.getMousePos(evt);
+          if (this.dragNode) {
+            this.dragNode.x = pos.x - this.offsetX;
+            this.dragNode.y = pos.y - this.offsetY;
+            this.highlightNode = this.dragNode;
+            this.drawGraph();
+          } else {
+            const hoverNode = this.getNodeAtPosition(pos.x, pos.y);
+            if (hoverNode !== this.highlightNode) {
+              this.highlightNode = hoverNode;
+              this.drawGraph();
+            }
+            this.canvas.style.cursor = hoverNode ? "pointer" : "grab";
+          }
+        }
+
+        onClick(evt) {
+          const pos = this.getMousePos(evt);
+          const node = this.getNodeAtPosition(pos.x, pos.y);
+          if (node) {
+            this.infoDiv.textContent = `Node yang diklik: ${
+              node.id
+            } (x: ${Math.round(node.x)}, y: ${Math.round(node.y)})`;
+          } else {
+            this.infoDiv.textContent = "Klik node untuk info.";
+          }
+        }
+      }
+
+      // Contoh buat dua instance berbeda
+
+      const nodes1 = [
+        { id: "A", x: 100, y: 100 },
+        { id: "B", x: 300, y: 100 },
+        { id: "C", x: 200, y: 250 },
+        { id: "D", x: 400, y: 250 },
+      ];
+
+      const edges1 = [
+        ["A", "B"],
+        ["A", "C"],
+        ["B", "D"],
+        ["C", "D"],
+      ];
+
+      const nodes2 = [
+        { id: "1", x: 150, y: 150 },
+        { id: "2", x: 350, y: 150 },
+        { id: "3", x: 250, y: 300 },
+      ];
+
+      const edges2 = [
+        ["1", "2"],
+        ["2", "3"],
+      ];
+
+      // Buat instance pertama
+      const graph1 = new NetworkGraph(
+        "networkGraph1",
+        "info1",
+        nodes1,
+        edges1,
+        "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+      );
+
+      // Buat instance kedua (bisa dengan gambar berbeda jika mau)
+      const graph2 = new NetworkGraph(
+        "networkGraph2",
+        "info2",
+        nodes2,
+        edges2,
+        "https://cdn-icons-png.flaticon.com/512/147/147144.png"
+      );
+
+      const canvas = document.getElementById('networkGraph1');
+  // ...gambar dan draw di canvas ...
+
+  document.getElementById('btnDownload').addEventListener('click', () => {
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'network-graph.png';
+    link.click();
+  });
+    </script>
+  </body>
+</html>
