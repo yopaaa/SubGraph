@@ -3,6 +3,10 @@ import "./NodeEditor.css";
 
 export default function NodeEditor({ edges, setEdges, nodes, setNodes }) {
     const [name, setName] = useState("");
+    const [imageFile, setImageFile] = useState(null);
+    const [preview, setPreview] = useState(null);
+    const [selectedNode, setSelectedNode] = useState("");
+
 
     const handleEdgeChange = (edgeIndex, side, newValue) => {
         setEdges((prev) => {
@@ -28,41 +32,55 @@ export default function NodeEditor({ edges, setEdges, nodes, setNodes }) {
         if (!trimmed) return;
         const isExist = nodes.find((val) => val.id === trimmed);
         if (isExist) return;
-        setNodes((prev) => [...prev, { id: trimmed, x: 300, y: 300 }]);
+
+
+        const imageUrl = imageFile ? URL.createObjectURL(imageFile) : "/icon/cube.png";
+        setNodes((prev) => [...prev, { id: trimmed, x: 300, y: 300, image: imageUrl }]);
         setName("");
+        setImageFile(null);
+        setPreview(null);
     };
+
+    const handleDeleteNode = (id) => {
+        setNodes((prev) => prev.filter((node) => node.id !== id));
+        setEdges((prev) => prev.filter(([from, to]) => from !== id && to !== id));
+    };
+
 
     return (
         <div className="editor-container">
             <h2>Node Editor</h2>
 
-            {edges.map((pair, edgeIndex) => (
-                <div key={edgeIndex} className="edge-row">
-                    <select
-                        value={pair[0]}
-                        onChange={(e) => handleEdgeChange(edgeIndex, "from", e.target.value)}
-                    >
-                        {nodes.map((node) => (
-                            <option key={node.id} value={node.id}>
-                                {node.id}
-                            </option>
-                        ))}
-                    </select>
+            <div className="egdeContainer">
+                {edges.map((pair, edgeIndex) => (
+                    <div key={edgeIndex} className="edge-row">
+                        <select
+                            value={pair[0]}
+                            onChange={(e) => handleEdgeChange(edgeIndex, "from", e.target.value)}
+                        >
+                            {nodes.map((node) => (
+                                <option key={node.id} value={node.id}>
+                                    {node.id}
+                                </option>
+                            ))}
+                        </select>
 
-                    <span className="separator">→→→→→→→</span>
+                        <span className="separator"> → </span>
 
-                    <select
-                        value={pair[1]}
-                        onChange={(e) => handleEdgeChange(edgeIndex, "to", e.target.value)}
-                    >
-                        {nodes.map((node) => (
-                            <option key={node.id} value={node.id}>
-                                {node.id}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            ))}
+                        <select
+                            value={pair[1]}
+                            onChange={(e) => handleEdgeChange(edgeIndex, "to", e.target.value)}
+                        >
+                            {nodes.map((node) => (
+                                <option key={node.id} value={node.id}>
+                                    {node.id}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                ))}
+            </div>
+
 
             <button type="button" onClick={handleAddEdge}>
                 Add Edge
@@ -75,10 +93,55 @@ export default function NodeEditor({ edges, setEdges, nodes, setNodes }) {
                     placeholder="Node name"
                     onChange={(e) => setName(e.target.value)}
                 />
+                <br />
+
+                <input
+                    style={{ backgroundImage: `url(${preview})` }}
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+                        setImageFile(file);
+                        if (file) setPreview(URL.createObjectURL(file));
+                    }}
+                />
+
+
+                <br />
                 <button type="button" onClick={handleAddNode}>
                     Add Node
                 </button>
             </div>
+
+
+            <br />
+
+            <select
+                value={selectedNode}
+                onChange={(e) => setSelectedNode(e.target.value)}
+            >
+                <option value="" disabled>
+                    Pilih node untuk hapus
+                </option>
+                {nodes.map((node) => (
+                    <option key={node.id} value={node.id}>
+                        {node.id}
+                    </option>
+                ))}
+            </select>
+
+            <button
+                type="button"
+                onClick={() => {
+                    if (!selectedNode) return alert("Pilih node dulu");
+                    handleDeleteNode(selectedNode);
+                    setSelectedNode("");
+                }}
+            >
+                Delete Node
+            </button>
+
+
         </div>
     );
 }

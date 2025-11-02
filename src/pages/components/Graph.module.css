@@ -5,3 +5,10 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
+
+.graphContainer{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

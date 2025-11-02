@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import NodeEditor from "./NodeEditor";
-import "./Graph.css"
+import styles from "./Graph.module.css"
 
 function Graph({
   canvasId,
@@ -34,6 +34,7 @@ function Graph({
         this.canvas.addEventListener("mouseup", this.onMouseUp.bind(this));
         this.canvas.addEventListener("mousemove", this.onMouseMove.bind(this));
         this.canvas.addEventListener("click", this.onClick.bind(this));
+        this.drawGraph();
       }
 
       getMousePos(evt) {
@@ -71,48 +72,48 @@ function Graph({
 
       drawNodes() {
         this.nodes.forEach((node) => {
-          if (this.nodeImg.complete && this.nodeImg.naturalWidth !== 0) {
-            const size = this.NODE_RADIUS * 2;
+          // simpan image di node agar tidak dibuat ulang
+          if (!node._img) {
+            node._img = new Image();
+            node._img.src = node.image || this.nodeImg.src;
+            node._img.onload = () => this.drawGraph();
+          }
 
-            if (node === this.highlightNode) {
-              this.ctx.strokeStyle = "black";
-              this.ctx.lineWidth = 1;
-              this.ctx.beginPath();
-              this.ctx.arc(
-                node.x,
-                node.y,
-                this.NODE_RADIUS + 10,
-                0,
-                2 * Math.PI
-              );
-              this.ctx.stroke();
-            }
+          const size = this.NODE_RADIUS * 2;
 
+          // kalau sedang di-highlight, beri lingkaran luar
+          if (this.highlightNode === node) {
+            this.ctx.strokeStyle = "black";
+            this.ctx.lineWidth = 1;
+            this.ctx.beginPath();
+            this.ctx.arc(node.x, node.y, this.NODE_RADIUS + 10, 0, 2 * Math.PI);
+            this.ctx.stroke();
+          }
+
+          if (node._img.complete && node._img.naturalWidth !== 0) {
             this.ctx.drawImage(
-              this.nodeImg,
+              node._img,
               node.x - this.NODE_RADIUS,
               node.y - this.NODE_RADIUS,
               size,
               size
             );
-
-            this.ctx.fillStyle = "#000";
-            this.ctx.font = "14px Arial";
-            this.ctx.textAlign = "center";
-            this.ctx.fillText(
-              node.id,
-              node.x,
-              node.y + this.NODE_RADIUS + 15
-            );
           } else {
+            // fallback kalau gambar belum selesai load
             this.ctx.beginPath();
             this.ctx.fillStyle = "#4a90e2";
             this.ctx.arc(node.x, node.y, this.NODE_RADIUS, 0, 2 * Math.PI);
             this.ctx.fill();
             this.ctx.stroke();
           }
+
+          this.ctx.fillStyle = "#000";
+          this.ctx.font = "14px Arial";
+          this.ctx.textAlign = "center";
+          this.ctx.fillText(node.id, node.x, node.y + this.NODE_RADIUS + 15);
         });
       }
+
 
       drawGraph() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -228,9 +229,9 @@ export default function GraphApp() {
     ["B", "C"],
   ])
   const [node, setNode] = useState([
-    { id: "A", x: 100, y: 100, image: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
-    { id: "B", x: 300, y: 100, image: "https://cdn-icons-png.flaticon.com/512/147/147144.png" },
-    { id: "C", x: 200, y: 250, image: "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" },
+    { id: "A", x: 100, y: 100, image: "/icon/cube.png" },
+    { id: "B", x: 300, y: 100, image: "/icon/cube.png" },
+    { id: "C", x: 200, y: 250, image: "/icon/cube.png" },
   ]);
 
 
@@ -239,9 +240,9 @@ export default function GraphApp() {
 
   }, [])
 
-  return (<div className="container">
+  return (<div className={styles.container}>
     <NodeEditor edges={edges} setEdges={setEdges} nodes={node} setNodes={setNode} />
-    <div>
+    <div className={styles.graphContainer}>
       <h2>Demo Network Graph</h2>
 
       <Graph
@@ -249,7 +250,7 @@ export default function GraphApp() {
         infoId="info1"
         nodes={node}
         edges={edges}
-        nodeImageSrc="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+        // nodeImageSrc="https://cdn-icons-png.flaticon.com/512/616/616408.png"
         downloadButton
       />
     </div>

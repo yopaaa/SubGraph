@@ -9,6 +9,7 @@ import BackgroundSelector from "./components/BackgroundSelector";
 import VideoGrid from "./VideoGrid";
 import Explorer from "./Explorer";
 import Graph from './components/Graph'
+import Chatbot from "./components/Chatbot";
 
 const App = () => {
   const [showDiv, setShowDiv] = useState([0, 0, 0, 0, 0]);
@@ -50,8 +51,8 @@ const App = () => {
       component: <VideoGrid />
     },
     {
-      id: 4, icon: "/icon/terminal.png", name: "Terminal", function: () => toggleDiv(4),
-      component: <></>
+      id: 4, icon: "/icon/chat.png", name: "Chat Bot", function: () => toggleDiv(4),
+      component: <Chatbot/>
     },
   ]
 
