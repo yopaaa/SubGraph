@@ -5,8 +5,8 @@ import AppBar from './components/AppBar'
 import Dock from './components/Dock'
 import Panel from './components/Panel'
 import BackgroundSelector from "./components/BackgroundSelector";
-import VideoGrid from "./VideoGrid";
-import Explorer from "./Explorer";
+import VideoGrid from "./components/VideoGrid";
+import Explorer from "./components/Explorer";
 import Graph from './components/Graph'
 import Chatbot from "./components/Chatbot";
 

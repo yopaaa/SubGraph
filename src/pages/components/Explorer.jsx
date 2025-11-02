@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Explorer.css";
+import styles from "./Explorer.module.css";
 
 const initialData = [
   { id: 1, name: "Documents", type: "folder" },
@@ -22,49 +22,29 @@ export default function Explorer() {
   }
 
   return (
-    <div className="mac-explorer">
-      <aside className="sidebar">
-        <div className="section">
-          <h4>iCloud</h4>
-          <ul>
-            <li className="active">iCloud Drive</li>
-            <li>Shared</li>
-          </ul>
-        </div>
-        <div className="section">
-          <h4>Favorites</h4>
-          <ul>
-            <li>AirDrop</li>
-            <li>Recents</li>
-            <li>Applications</li>
-            <li>Desktop</li>
-            <li>Documents</li>
-            <li>Downloads</li>
-          </ul>
-        </div>
-      </aside>
+    <div className={styles.explorer}>
 
-      <main className="content">
-        <div className="breadcrumb">
-          <span className="crumb" onClick={goHome}>Home</span>
+      <main className={styles.content}>
+        <div className={styles.breadcrumb}>
+          <span className={styles.crumb} onClick={goHome}>Home</span>
           {path.slice(1).map((p, i) => (
-            <span key={i} className="crumb"> / {p}</span>
+            <span key={i} className={styles.crumb}> / {p}</span>
           ))}
         </div>
 
-        <div className="grid">
+        <div className={styles.grid}>
           {initialData.map((item) => (
             <div
               key={item.id}
-              className="file-item"
+              className={styles.fileItem}
               onClick={() => item.type === "folder" && openFolder(item.name)}
             >
               {item.thumb ? (
-                <img src={item.thumb} alt={item.name} className="thumb" />
+                <img src={item.thumb} alt={item.name} className={styles.thumb} />
               ) : (
-                <div className="folder-icon">📁</div>
+                <div className={styles.folderIcon}>📁</div>
               )}
-              <div className="file-name">{item.name}</div>
+              <div className={styles.fileName}>{item.name}</div>
             </div>
           ))}
         </div>
@@ -72,6 +52,3 @@ export default function Explorer() {
     </div>
   );
 }
-
-/* MacFileExplorer.css */
-
