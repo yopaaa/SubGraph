@@ -1,0 +1,86 @@
+.appHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0000001c;
+
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    font-family: sans-serif;
+}
+
+.appHeader div span {
+    cursor: pointer;
+}
+
+.clock {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.leftHeader,
+.centerHeader,
+.rightHeader {
+    flex: 1;
+    /* <--- Bikin ukurannya sama */
+    display: flex;
+    align-items: center;
+}
+
+.leftHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.leftHeaderText span {
+    margin-right: 15px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.leftHeaderText span a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.rightHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 10px;
+    justify-content: flex-end;
+
+}
+
+.centerHeader {
+    justify-content: center;
+}
+
+
+
+@media (max-width: 700px) {
+    .clock {
+        font-size: 8px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .leftHeader {
+        flex: none;
+    }
+
+    .leftHeaderText {
+        display: none;
+    }
+}

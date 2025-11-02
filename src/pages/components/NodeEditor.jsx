@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./NodeEditor.css";
+import styles from "./NodeEditor.module.css";
 
 export default function NodeEditor({ edges, setEdges, nodes, setNodes }) {
     const [name, setName] = useState("");
@@ -48,100 +48,94 @@ export default function NodeEditor({ edges, setEdges, nodes, setNodes }) {
 
 
     return (
-        <div className="editor-container">
-            <h2>Node Editor</h2>
+       <div className={styles.container}>
+      <h2>Node Editor</h2>
 
-            <div className="egdeContainer">
-                {edges.map((pair, edgeIndex) => (
-                    <div key={edgeIndex} className="edge-row">
-                        <select
-                            value={pair[0]}
-                            onChange={(e) => handleEdgeChange(edgeIndex, "from", e.target.value)}
-                        >
-                            {nodes.map((node) => (
-                                <option key={node.id} value={node.id}>
-                                    {node.id}
-                                </option>
-                            ))}
-                        </select>
-
-                        <span className="separator"> → </span>
-
-                        <select
-                            value={pair[1]}
-                            onChange={(e) => handleEdgeChange(edgeIndex, "to", e.target.value)}
-                        >
-                            {nodes.map((node) => (
-                                <option key={node.id} value={node.id}>
-                                    {node.id}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                ))}
-            </div>
-
-
-            <button type="button" onClick={handleAddEdge}>
-                Add Edge
-            </button>
-
-            <div className="node-adder">
-                <input
-                    type="text"
-                    value={name}
-                    placeholder="Node name"
-                    onChange={(e) => setName(e.target.value)}
-                />
-                <br />
-
-                <input
-                    style={{ backgroundImage: `url(${preview})` }}
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                        const file = e.target.files[0];
-                        setImageFile(file);
-                        if (file) setPreview(URL.createObjectURL(file));
-                    }}
-                />
-
-
-                <br />
-                <button type="button" onClick={handleAddNode}>
-                    Add Node
-                </button>
-            </div>
-
-
-            <br />
-
+      <div className={styles.edgeContainer}>
+        {edges.map((pair, edgeIndex) => (
+          <div key={edgeIndex} className={styles.edgeRow}>
             <select
-                value={selectedNode}
-                onChange={(e) => setSelectedNode(e.target.value)}
+              value={pair[0]}
+              onChange={(e) => handleEdgeChange(edgeIndex, "from", e.target.value)}
             >
-                <option value="" disabled>
-                    Pilih node untuk hapus
+              {nodes.map((node) => (
+                <option key={node.id} value={node.id}>
+                  {node.id}
                 </option>
-                {nodes.map((node) => (
-                    <option key={node.id} value={node.id}>
-                        {node.id}
-                    </option>
-                ))}
+              ))}
             </select>
 
-            <button
-                type="button"
-                onClick={() => {
-                    if (!selectedNode) return alert("Pilih node dulu");
-                    handleDeleteNode(selectedNode);
-                    setSelectedNode("");
-                }}
+            <span className={styles.separator}> → </span>
+
+            <select
+              value={pair[1]}
+              onChange={(e) => handleEdgeChange(edgeIndex, "to", e.target.value)}
             >
-                Delete Node
-            </button>
+              {nodes.map((node) => (
+                <option key={node.id} value={node.id}>
+                  {node.id}
+                </option>
+              ))}
+            </select>
+          </div>
+        ))}
+      </div>
 
+      <button type="button" onClick={handleAddEdge}>
+        Add Edge
+      </button>
 
-        </div>
+      <div className={styles.nodeAdder}>
+        <input
+          type="text"
+          value={name}
+          placeholder="Node name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <br />
+
+        <input
+          style={{ backgroundImage: `url(${preview})` }}
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            setImageFile(file);
+            if (file) setPreview(URL.createObjectURL(file));
+          }}
+        />
+        <br />
+        <button type="button" onClick={handleAddNode}>
+          Add Node
+        </button>
+      </div>
+
+      <br />
+
+      <select
+        value={selectedNode}
+        onChange={(e) => setSelectedNode(e.target.value)}
+      >
+        <option value="" disabled>
+          Pilih node untuk hapus
+        </option>
+        {nodes.map((node) => (
+          <option key={node.id} value={node.id}>
+            {node.id}
+          </option>
+        ))}
+      </select>
+
+      <button
+        type="button"
+        onClick={() => {
+          if (!selectedNode) return alert("Pilih node dulu");
+          handleDeleteNode(selectedNode);
+          setSelectedNode("");
+        }}
+      >
+        Delete Node
+      </button>
+    </div>
     );
 }

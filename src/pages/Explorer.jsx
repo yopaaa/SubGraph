@@ -10,7 +10,7 @@ const initialData = [
   { id: 6, name: "Rooftop Shoot.jpg", type: "file", thumb: "https://via.placeholder.com/100x100?text=Shoot" }
 ];
 
-export default function MacFileExplorer() {
+export default function Explorer() {
   const [path, setPath] = useState(["Home"]);
 
   function openFolder(name) {

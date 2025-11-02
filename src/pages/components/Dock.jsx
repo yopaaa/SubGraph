@@ -1,5 +1,5 @@
-import "../Home.css";
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import styles from "./Dock.module.css"
 
 const OGG_SOUND_URL = '/sounds/map-20.oga';
 
@@ -26,13 +26,13 @@ const Dock = ({ dock, showDiv }) => {
   }, [isReady, audio]);
 
   return (
-    <div className="apps">
-      <div id="app-container">
+    <div className={styles.apps}>
+      <div className={styles.appContainer}>
         {dock.map(app => (
           <span key={app.id} onClick={() => {
             app.function()
             playClickSound()
-          }} className={`app-items magic-lamp`}>
+          }} className={`${styles.appItems} ${styles.magicLamp}`}>
             <img src={app.icon} alt="" width="50" height="50" />
             {(showDiv[app.id]) ? <img src="/icon/circle.png" alt="" width="5" height="5" style={{ position: "absolute" }} /> : null}
           </span>

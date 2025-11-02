@@ -4,7 +4,6 @@ import AppBar from './components/AppBar'
 
 import Dock from './components/Dock'
 import Panel from './components/Panel'
-import NetworkGraphChart from './NetworkGraphChart'
 import BackgroundSelector from "./components/BackgroundSelector";
 import VideoGrid from "./VideoGrid";
 import Explorer from "./Explorer";
@@ -16,25 +15,13 @@ const App = () => {
   const [topIndex, setTopIndex] = useState(1);
   const [showBgSelector, setshowBgSelector] = useState(false)
   const [maxWindow, setmaxWindow] = useState(null)
-  const toggleDiv = (index) => {
-    const updated = [...showDiv];
-    updated[index] = topIndex;
-    setTopIndex(topIndex + 1);
-    setShowDiv(updated);
-  };
-
-  const hideDiv = (index) => {
-    const updated = [...showDiv];
-    updated[index] = 0;
-    setShowDiv(updated);
-  };
 
   const dockData = [
     {
       id: 0, icon: "/icon/browser.png", name: "Browser", function: () => {
         toggleDiv(0)
       },
-      component: <NetworkGraphChart />
+      component: <><h1>Materi</h1></>
     },
     {
       id: 1, icon: "/icon/calculator.png", name: "Calculator", function: () => {
@@ -52,7 +39,7 @@ const App = () => {
     },
     {
       id: 4, icon: "/icon/chat.png", name: "Chat Bot", function: () => toggleDiv(4),
-      component: <Chatbot/>
+      component: <Chatbot />
     },
   ]
 
@@ -88,9 +75,21 @@ const App = () => {
     ]
   }
 
+  const toggleDiv = (index) => {
+    const updated = [...showDiv];
+    updated[index] = topIndex;
+    setTopIndex(topIndex + 1);
+    setShowDiv(updated);
+  };
+
+  const hideDiv = (index) => {
+    const updated = [...showDiv];
+    updated[index] = 0;
+    setShowDiv(updated);
+  };
+
   return (
     <div className="app">
-      {/* Header */}
       <Panel data={panelData} />
 
       {showBgSelector && <BackgroundSelector onClose={() => setshowBgSelector(false)} />}
@@ -124,9 +123,7 @@ const App = () => {
       </div>
 
 
-      {/* Apps */}
       <Dock dock={dockData} showDiv={showDiv} />
-
     </div>
   );
 };

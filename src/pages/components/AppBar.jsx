@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './AppBar.css'
+import styles from './AppBar.module.css'
 
-const OGG_SOUND_URL =  '/sounds/close-20.oga';
+const OGG_SOUND_URL = '/sounds/close-20.oga';
 
 function AppBar({ onClose, onMinimize, onMaximize, draggableProps: d, title = "My App" }) {
   const [audio, setAudio] = useState(null);
@@ -22,7 +22,7 @@ function AppBar({ onClose, onMinimize, onMaximize, draggableProps: d, title = "M
   const playClickSound = useCallback(() => {
     if (!isReady || !audio) return;
     audio.currentTime = 0;
-    audio.play().catch(() => {});
+    audio.play().catch(() => { });
   }, [isReady, audio]);
 
   // Handler untuk setiap tombol
@@ -40,13 +40,13 @@ function AppBar({ onClose, onMinimize, onMaximize, draggableProps: d, title = "M
   };
 
   return (
-    <div className="macos-menubar" >
-      <div className="window-controls">
-        <span className="close-btn" onClick={handleClose}></span>
-        <span className="maximize-btn" onClick={handleMaximize}></span>
-        <span className="minimize-btn" onClick={handleMinimize}></span>
+    <div className={styles.menubar}>
+      <div className={styles.windowControls}>
+        <span className={styles.closeBtn} onClick={handleClose}></span>
+        <span className={styles.maximizeBtn} onClick={handleMaximize}></span>
+        <span className={styles.minimizeBtn} onClick={handleMinimize}></span>
       </div>
-      <div className="app-title" {...d}>{title}</div>
+      <div className={styles.appTitle} {...d}>{title}</div>
     </div>
   );
 }

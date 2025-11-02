@@ -1,0 +1,60 @@
+.apps {
+    width: 100vw;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    position: fixed;
+    padding: 10px;
+    left: 0;
+    z-index: 100;
+}
+
+.appContainer {
+    display: flex;
+    gap: 15px;
+    background-color: #ffffff45;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.appItems {
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+        opacity 0.4s ease;
+}
+
+.appItems:hover {
+    transform: scale(1.5);
+}
+
+
+
+@keyframes magicLampBounce {
+    0% {
+        transform: translateY(0) scaleY(1);
+    }
+
+    30% {
+        transform: translateY(-20px) scaleY(1.2) scaleX(0.9);
+    }
+
+    60% {
+        transform: translateY(-10px) scaleY(0.95) scaleX(1.1);
+    }
+
+    100% {
+        transform: translateY(0) scaleY(1) scaleX(1);
+    }
+}
+
+
+.appItems.magicLamp {
+    animation: magicLampBounce 0.6s ease;
+}
+
+.appItems:hover.magicLamp {
+    animation: none;
+}

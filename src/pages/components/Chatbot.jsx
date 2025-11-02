@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
-import "./Chatbot.css";
+import styles from "./Chatbot.module.css";
+import { PulseLoader } from "react-spinners";
 
 const GEMINI_API_KEY = "AIzaSyDjiMbxJpVkq_bNPO6skpB7Bk9x-8yntd0";
 const GEMINI_ENDPOINT =
@@ -16,6 +17,7 @@ export default function Chatbot() {
 
     const handleSend = async () => {
         setInput("")
+        setLoading(true)
         setMessages((prev) => [...prev, { role: "user", text: input.trim() }]);
         const requestPayload = {
             system_instruction: {
@@ -33,6 +35,7 @@ export default function Chatbot() {
         const textPart = response.data.candidates[0].content.parts[0].text.trim();
 
         setMessages((prev) => [...prev, { role: "bot", text: textPart }]);
+        setLoading(false)
     };
 
     const containerRef = useRef(null);
@@ -46,33 +49,39 @@ export default function Chatbot() {
     }, [messages]);
 
     return (
-        <div className="chatbot-container" >
+       <div className={styles.container}>
+        
+      <div className={styles.chatbox} ref={containerRef}>
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            className={`${styles.message} ${
+              msg.role === "user" ? styles.user : styles.bot
+            }`}
+          >
+            <ReactMarkdown>{msg.text}</ReactMarkdown>
+          </div>
+        ))}
+        {loading &&  <PulseLoader color="#3498db" size={10} speedMultiplier={0.8}/>}
+      </div>
 
-            <div className="chatbox" ref={containerRef}>
-                {messages.map((msg, i) => (
-                    <div
-                        key={i}
-                        className={`message ${msg.role === "user" ? "user" : "bot"}`}
-                    >
-                        <ReactMarkdown>{msg.text}</ReactMarkdown>
-                    </div>
-                ))}
-                {loading && <div className="loading">Bot sedang mengetik...</div>}
-            </div>
-
-            <div className="input-container">
-                <input
-                    type="text"
-                    placeholder="Ketik pesan..."
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                    className="chat-input"
-                />
-                <button onClick={handleSend} className="chat-button" disabled={loading}>
-                    Kirim
-                </button>
-            </div>
-        </div>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          placeholder="Ketik pesan..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSend()}
+          className={styles.chatInput}
+        />
+        <button
+          onClick={handleSend}
+          className={styles.chatButton}
+          disabled={loading}
+        >
+          Kirim
+        </button>
+      </div>
+    </div>
     );
 }

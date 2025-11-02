@@ -1,5 +1,5 @@
 import React from "react";
-import "./VideoGrid.css";
+import styles from "./VideoGrid.module.css";
 
 const videos = [
   {
@@ -30,20 +30,20 @@ const videos = [
 
 export default function VideoGrid() {
   return (
-    <div className="container">
-      <div className="video-grid">
+    <div className={styles.container}>
+      <div className={styles.videoGrid}>
         {videos.map((v, i) => (
-          <div key={i} className="video-card">
+          <div key={i} className={styles.videoCard}>
             <iframe
               src={v.video}
               title={v.title}
               frameBorder="0"
               allowFullScreen
-              className="video-iframe"
+              className={styles.videoIframe}
             ></iframe>
-            {/* <img src={v.banner} alt={v.title} className="video-banner" /> */}
-            <h3 className="video-title">{v.title}</h3>
-            <p className="video-desc">{v.description}</p>
+
+            <h3 className={styles.videoTitle}>{v.title}</h3>
+            <p className={styles.videoDesc}>{v.description}</p>
           </div>
         ))}
       </div>

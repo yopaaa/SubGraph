@@ -74,21 +74,18 @@
   background-color: transparent;
 }
 
-/* 2. Styling Track (jalur di mana thumb bergerak) */
 .container::-webkit-scrollbar-track {
   margin: 50px 0;
   background-color: #f8f9fa; /* Latar belakang terang */
   border-radius: 10px;
 }
 
-/* 3. Styling Thumb (bagian yang bisa digeser) */
 .container::-webkit-scrollbar-thumb {
   background-color: #6c757d; /* Warna utama abu-abu tua */
   border-radius: 10px; /* Membuat ujungnya membulat */
   border: 2px solid #f8f9fa; /* Border untuk jarak dari track */
 }
 
-/* 4. Efek Hover pada Thumb */
 .container::-webkit-scrollbar-thumb:hover {
   background-color: #495057; /* Warna lebih gelap saat disentuh/hover */
 }

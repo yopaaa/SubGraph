@@ -1,4 +1,4 @@
-.macos-menubar {
+.menubar {
   display: flex;
   align-items: center;
   height: 30px;
@@ -12,12 +12,12 @@
   position: relative;
 }
 
-.window-controls {
+.windowControls {
   display: flex;
   gap: 8px;
 }
 
-.window-controls span {
+.windowControls span {
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -25,20 +25,19 @@
   cursor: pointer;
 }
 
-.close-btn {
+.closeBtn {
   background-color: #ff5f57;
 }
 
-.minimize-btn {
+.minimizeBtn {
   background-color: #ffbd2e;
 }
 
-.maximize-btn {
+.maximizeBtn {
   background-color: #28c940;
 }
 
-
-.app-title {
+.appTitle {
   color: #555;
   font-weight: bold;
   flex: 1;

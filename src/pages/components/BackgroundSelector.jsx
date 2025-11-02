@@ -4,21 +4,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './BackgroundSelector.module.css';
 import images from '../../../data/background.json'
 
-// const images = [
-//   "/bg/1.jpg",
-//   "/bg/2.jpg",
-//   "/bg/3.jpg",
-//   "/bg/4.jpg",
-//   "/bg/5.jpg",
-//   "/bg/6.jpg",
-// ];
-
 async function cacheImage(url) {
-  // Cek apakah sudah ada di localStorage
   const cached = localStorage.getItem(`imgCache:${url}`);
   if (cached) return cached;
 
-  // Ambil gambar dari URL dan ubah ke Base64
   const response = await fetch(url);
   const blob = await response.blob();
   const reader = new FileReader();
@@ -26,7 +15,6 @@ async function cacheImage(url) {
   return new Promise((resolve) => {
     reader.onloadend = () => {
       const base64 = reader.result;
-      // Simpan di localStorage
       try {
         localStorage.setItem(`imgCache:${url}`, base64);
       } catch {
