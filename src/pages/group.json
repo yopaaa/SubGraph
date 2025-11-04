@@ -1,0 +1,556 @@
+[
+  {
+    "groupName": "Kelompok 1: Logika Matematika",
+    "title": "Website Logika Matematika",
+    "description": "Website interaktif yang membahas dasar logika, tabel kebenaran, dan silogisme dalam kehidupan sehari-hari.",
+    "video": "https://www.youtube.com/embed/tgbNymZ7vqY",
+    "website": "/",
+    "team": [
+      {
+        "name": "Yopa Pitra Ramadhani",
+        "img": "/team/yopa.jpeg",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "www",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          },
+          {
+            "name": "github",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Adelia Syawali",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Nadia Selma",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Logic builds clarity, clarity builds understanding."
+  },
+  {
+    "groupName": "Kelompok 2: Sistem Persamaan Linear",
+    "title": "Solver Persamaan Linear",
+    "description": "Aplikasi untuk menyelesaikan sistem persamaan linear dengan metode eliminasi, substitusi, dan matriks.",
+    "video": "https://www.youtube.com/embed/5MgBikgcWnY",
+    "website": "/",
+    "team": [
+      {
+        "name": "Farhan Rahman",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Dina Laras",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Bima Pratama",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Setiap solusi dimulai dari satu persamaan."
+  },
+  {
+    "groupName": "Kelompok 3: Statistika Dasar",
+    "title": "Visualisasi Data Interaktif",
+    "description": "Website yang menampilkan analisis data dan visualisasi grafik untuk memahami distribusi dan peluang.",
+    "video": "https://www.youtube.com/embed/qv6UVOQ0F44",
+    "website": "/",
+    "team": [
+      {
+        "name": "Rafi Dwi",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Selvi Ananda",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Hendra Kusuma",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Numbers tell stories, if you know how to listen."
+  },
+  {
+    "groupName": "Kelompok 4: Kalkulus Diferensial",
+    "title": "Simulasi Turunan dan Grafik",
+    "description": "Platform pembelajaran untuk memahami konsep turunan dengan grafik interaktif dan animasi fungsi.",
+    "video": "https://www.youtube.com/embed/Sv0z7bkYqU8",
+    "website": "/",
+    "team": [
+      {
+        "name": "Rania Putri",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Andre Setiawan",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Nico Pradipta",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Change is constant, calculus proves it."
+  },
+  {
+    "groupName": "Kelompok 5: Teori Bilangan",
+    "title": "Eksplorasi Bilangan Prima",
+    "description": "Website yang menjelaskan pola bilangan prima dan algoritma untuk menemukan bilangan prima besar.",
+    "video": "https://www.youtube.com/embed/0Oazb7IWzbA",
+    "website": "/",
+    "team": [
+      {
+        "name": "Vina Amalia",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Rizky Maulana",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Tasya Nur",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Prime numbers: simple, yet mysteriously infinite."
+  },
+  {
+    "groupName": "Kelompok 6: Geometri",
+    "title": "Dunia Bentuk dan Ruang",
+    "description": "Website pembelajaran tentang bangun datar dan ruang, lengkap dengan simulasi 3D dan kalkulator luas-volume.",
+    "video": "https://www.youtube.com/embed/z8v0tGIXz7Y",
+    "website": "/",
+    "team": [
+      {
+        "name": "Rangga Adi",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Melisa Lestari",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Jodi Setia",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Geometry is the poetry of logical shapes."
+  },
+  {
+    "groupName": "Kelompok 7: Trigonometri",
+    "title": "Eksplorasi Sudut dan Gelombang",
+    "description": "Website interaktif untuk belajar fungsi sinus, cosinus, dan tangen dalam konteks nyata seperti musik dan navigasi.",
+    "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "website": "/",
+    "team": [
+      {
+        "name": "Arif Nugraha",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Laila Putri",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Dewi Ramadhani",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Every angle has a story, every curve a rhythm."
+  },
+  {
+    "groupName": "Kelompok 8: Aljabar",
+    "title": "Mesin Penyederhana Persamaan",
+    "description": "Website yang bisa menyederhanakan ekspresi aljabar dan menampilkan langkah-langkah solusinya.",
+    "video": "https://www.youtube.com/embed/Ml3KDlt-F0M",
+    "website": "/",
+    "team": [
+      {
+        "name": "Fajar Naufal",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Nadia Amelia",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Toni Wirawan",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Balance both sides, find the truth in between."
+  },
+  {
+    "groupName": "Kelompok 9: Kombinatorika",
+    "title": "Hitung Peluang dengan Kombinasi",
+    "description": "Website yang menjelaskan prinsip permutasi dan kombinasi dengan contoh dari permainan kartu.",
+    "video": "https://www.youtube.com/embed/WUvTyaaNkzM",
+    "website": "/",
+    "team": [
+      {
+        "name": "Siska Febri",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Rifki Anwar",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Ayu Laras",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Possibilities are endless, math just counts them."
+  },
+  {
+    "groupName": "Kelompok 10: Matriks dan Transformasi",
+    "title": "Simulasi Transformasi Linear",
+    "description": "Website untuk memvisualisasikan transformasi linear seperti rotasi dan skala menggunakan matriks.",
+    "video": "https://www.youtube.com/embed/kYB8IZa5AuE",
+    "website": "/",
+    "team": [
+      {
+        "name": "Reza Akbar",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Putri Salsabila",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      },
+      {
+        "name": "Eko Firmansyah",
+        "img": "/team/user.png",
+        "NIM": 1062500,
+        "links": [
+          {
+            "name": "website",
+            "target": "https://instagram.com"
+          },
+          {
+            "name": "instagram",
+            "target": "https://yopaaa.xyz"
+          }
+        ]
+      }
+    ],
+    "slogan": "Matrices turn motion into meaning."
+  }
+]
