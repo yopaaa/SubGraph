@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { useSpring, animated } from '@react-spring/web'
 import styles from "./TRPL.module.css"
-import data from './group.json'
+import data from '../pages/group.json'
 
 const url = (name, wrap = false) =>
   `${wrap ? 'url(' : ''}/bg/${name}.svg${wrap ? ')' : ''}`

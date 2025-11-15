@@ -1,8 +1,7 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import TRPL from "./pages/TRPL";
-import TRPL2 from "./pages/TRPL2";
+import TRPL from "./trpl/TRPL";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
         <Route path="/trpl" element={<TRPL />} />
         <Route path="/diskrit" element={<TRPL />} />
         <Route path="/group" element={<TRPL />} />
-        <Route path="/trpl2" element={<TRPL2 />} />
       </Routes>
     </Router>
   );
