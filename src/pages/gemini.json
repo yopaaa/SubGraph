@@ -1,0 +1,4 @@
+{
+    "GEMINI_API_KEY": "AIzaSyDjiMbxJpVkq_bNPO6skpB7Bk9x-8yntd0",
+    "GEMINI_ENDPOINT": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+}

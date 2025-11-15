@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import NodeEditor from "./NodeEditor";
 import styles from "./Graph.module.css"
+import { GEMINI_API_KEY, GEMINI_ENDPOINT } from '../gemini.json'
 
 function Graph({
   canvasId,
@@ -222,6 +223,42 @@ function Graph({
   );
 }
 
+import axios from "axios";
+import Loading from "./Loading";
+
+const finalSchema = {
+  type: "array",
+  items: {
+    type: "object",
+    properties: {
+      edges: {
+        type: "array",
+        items: {
+          type: "array",
+          items: { type: "string" }
+        }
+      },
+      nodes: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            x: { type: "integer" },
+            y: { type: "integer" },
+            image: { type: "string" }
+          },
+          required: ["id", "x", "y", "image"]
+        }
+      },
+      description: { type: "string" }
+    },
+    required: ["edges", "nodes"]
+  }
+};
+
+
+
 export default function GraphApp() {
   const [edges, setEdges] = useState([
     ["A", "B"],
@@ -233,7 +270,50 @@ export default function GraphApp() {
     { id: "B", x: 300, y: 100, image: "/icon/cube.png" },
     { id: "C", x: 200, y: 250, image: "/icon/cube.png" },
   ]);
+  const [sub, setSub] = useState(null)
+  const [jumlahSub, setJumlahSub] = useState(1)
 
+
+  async function SubGraph() {
+    try {
+      const prompt = `
+        bentuklah ${jumlahSub} subgraph dari data graph utuh yang di berikan
+
+        struktur edges nya array berisi "A"
+        dan nodes nya array berisi { id: "A", x: 100, y: 100, image: "/icon/cube.png" }
+
+        berikan juga penjelasan nya di kolom description dalam bahasa indonesia
+        data:
+---
+${JSON.stringify(edges)}
+${JSON.stringify(node)}
+---
+`;
+      const requestPayload = {
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: finalSchema,
+        },
+      };
+
+      const response = await axios.post(GEMINI_ENDPOINT, requestPayload, {
+        params: { key: GEMINI_API_KEY },
+        headers: { "Content-Type": "application/json" },
+      });
+
+      // Parsing respons sesuai mode
+      const textPart = response.data.candidates[0].content.parts[0].text.trim();
+
+      const parsedData = JSON.parse(textPart);
+
+      return parsedData
+
+    } catch (error) {
+      console.error("Gemini API Error:", error.response?.data || error.message);
+      return null
+    }
+  }
 
   useEffect(() => {
 
@@ -245,14 +325,49 @@ export default function GraphApp() {
     <div className={styles.graphContainer}>
       <h2>Demo Network Graph</h2>
 
+
       <Graph
         canvasId="graph1"
         infoId="info1"
         nodes={node}
         edges={edges}
-        // nodeImageSrc="https://cdn-icons-png.flaticon.com/512/616/616408.png"
         downloadButton
       />
+
+      <span>
+
+        <button type="button" onClick={async () => {
+          setSub(1)
+          const data = await SubGraph()
+          console.log(data);
+          setSub(data)
+
+        }}>Cari SubGraph nya</button>
+
+        <select name="jumabhSub" id="jumlahSUb" onChange={(e) => setJumlahSub(e.target.value)
+        }>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </span>
+
+      {typeof sub == "object" ? <>
+        {sub.map((val, i) => {
+          return (<div key={i}>
+            <Graph
+              canvasId="graph1"
+              infoId="info1"
+              nodes={val.nodes}
+              edges={val.edges}
+            />
+            {val.description}
+          </div>)
+        })}
+      </> : sub && <Loading/>}
     </div>
   </div>)
 }
+
+
+
