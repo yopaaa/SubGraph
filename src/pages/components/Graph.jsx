@@ -352,7 +352,7 @@ ${JSON.stringify(node)}
         </select>
       </span>
 
-      {typeof sub == "object" ? <>
+      {typeof sub == "object" && sub ? <>
         {sub.map((val, i) => {
           return (<div key={i}>
             <Graph
